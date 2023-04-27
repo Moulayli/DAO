@@ -29,7 +29,7 @@ public class JdbcSingleton {
 			try {
 				Class.forName(DRIVER);
 				connection = DriverManager.getConnection(URL, USER, PWD);
-				System.out.println("Connexion ouverte.");			
+				//System.out.println("Connexion ouverte.");			
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
@@ -43,7 +43,7 @@ public class JdbcSingleton {
 		if(connection!=null) {
 			try {
 				connection.close();
-				System.out.println("Connexion close.");
+				//System.out.println("Connexion close.");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

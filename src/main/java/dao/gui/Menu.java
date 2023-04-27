@@ -1,5 +1,10 @@
 package dao.gui;
 
+import java.util.Arrays;
+
+import dao.dao.UserDAO;
+import dao.model.User;
+
 public class Menu {
 	public static final int
 		actionList = 1,
@@ -22,9 +27,20 @@ public class Menu {
 
 		switch (action) {
 			case actionList:
+				list();
+
+				break;
 			case actionAdd:
+				// TODO: implement
+
+				break;
 			case actionEdit:
+				// TODO: implement
+
+				break;
 			case actionDelete:
+				// TODO: implement
+
 				break;
 			case actionExit:
 				System.out.println(Locale.exit);
@@ -39,5 +55,11 @@ public class Menu {
 		System.out.println();
 
 		return true;
+	}
+
+	private static void list() {
+		final User[] users = (User[]) UserDAO.getInstance().readAll().toArray();
+
+		System.out.println(Arrays.toString(users));
 	}
 }

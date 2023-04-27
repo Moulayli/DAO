@@ -1,12 +1,16 @@
 package dao.model;
-
 public class User {
 	private Integer id;//uniquement nécessaire car persistance Objet/Relationnel
 	private String login;
 	private String pwd;
 	private String firstName;
 	private String lastName;
-	
+
+	public User(String string) {
+		this.lastName = string;
+
+		// TODO Auto-generated constructor stub
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -37,6 +41,11 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
+	public String tostring() {
+		return this.lastName;
+	}
+
+
 
 }

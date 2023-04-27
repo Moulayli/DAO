@@ -22,19 +22,16 @@ public class DaoMain {
             }
         }
 
-        User user1=new User();
+        User user1=new User("Forget");
         user1.setFirstName("Nathalie");
-        user1.setLastName("Forget");
         user1.setLogin("nforget");
         user1.setPwd("pwd1");
-        User user2=new User();
+        User user2=new User("Buffalo");
         user2.setFirstName("Jean-Bernard");
-        user2.setLastName("Buffalo");
         user2.setLogin("bbuffalo");
         user2.setPwd("pwd2");
-        User user3=new User();
+        User user3=new User("Doeuf");
         user3.setFirstName("Jean-Yves");
-        user3.setLastName("Doeuf");
         user3.setLogin("jdoeuf");
         user3.setPwd("pwd3");
 		

@@ -1,24 +1,24 @@
 package dao.dao;
+import java.util.ArrayList;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
 import dao.model.User;
-
 public class UserDAO implements IDAO<User>{
-	
+
 	private final static UserDAO INSTANCE = new UserDAO();
 	private final static String INSERT_USER = "INSERT INTO USER (login,pwd,firstname,lastname) VALUES (?,?,?,?)";
-	
-	
+	private final static String SELECT_USERS = "SELECT * FROM USER ";
+
+
 	public static UserDAO getInstance() {
 		return INSTANCE;
 	}
 	
 	private UserDAO() {}
-
 	public User create(User user) {
 		PreparedStatement pst = null;
 		try {
@@ -45,23 +45,46 @@ public class UserDAO implements IDAO<User>{
 	}
 
 	public List<User> readAll() {
-		// TODO Auto-generated method stub
-		return null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+			Connection conn = JdbcSingleton.getInstance().getConnection();
+			pst = conn.prepareStatement(SELECT_USERS);
+			rs = pst.executeQuery();
+
+			List<User> userList = new ArrayList<>();
+			while (rs.next()) {
+				User user = new User(rs.getString("lastname"));
+				userList.add(user);
+			}
+			return userList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if (pst != null) {
+					pst.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public User read(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	public void update(User user) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	public void delete(User user) {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

@@ -92,10 +92,10 @@ public class UserDAO implements IDAO<User> {
 		try {
 			Connection conn = JdbcSingleton.getInstance().getConnection();
 			pst = conn.prepareStatement(SELECT_USERS_BY_ID);
-			pst.setLong(1, id);
+			pst.setInt(1, id);
 			rs = pst.executeQuery();
 			User user = new User(
-					Integer.parseInt(rs.getString("id")),
+					rs.getInt("id"),
 					rs.getString("firstName"),
 					rs.getString("lastName"),
 					rs.getString("login"));

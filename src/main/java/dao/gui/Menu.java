@@ -67,9 +67,43 @@ public class Menu {
 		System.out.println(String.format("(%s utilisateur%s)", users.size(), users.size() == 1 ? "" : 's'));
 	}
 
-	private static void add(final Scanner scanner) {}
+	private static void add(final Scanner scanner) {
+		final User user = new User(null, null, null, null);
 
-	private static void edit(final Scanner scanner) {}
+		System.out.print(Locale.addUserFirstName);
+		user.setFirstName(scanner.next());
+
+		System.out.print(Locale.addUserLastName);
+		user.setLastName(scanner.next());
+
+		System.out.print(Locale.addUserLogin);
+		user.setLogin(scanner.next());
+
+		UserDAO.getInstance().create(user);
+
+		System.out.println(Locale.addUserSuccess);
+	}
+
+	private static void edit(final Scanner scanner) {
+		System.out.println(Locale.editUser);
+		System.out.print(Locale.prompt);
+
+		final int id = scanner.nextInt();
+		final User user = UserDAO.getInstance().read(id);
+
+		System.out.print(Locale.editUserFirstName);
+		user.setFirstName(scanner.next());
+
+		System.out.print(Locale.editUserLastName);
+		user.setLastName(scanner.next());
+
+		System.out.print(Locale.editUserLogin);
+		user.setLogin(scanner.next());
+
+		UserDAO.getInstance().update(user);
+
+		System.out.println(Locale.editUserSuccess);
+	}
 
 	private static void delete(final Scanner scanner) {
 		System.out.println(Locale.deleteUser);
@@ -77,6 +111,8 @@ public class Menu {
 
 		final int id = scanner.nextInt();
 
-		System.out.println(id);
+		UserDAO.getInstance().delete(id);
+
+		System.out.println(String.format(Locale.deleteUserSuccess, id));
 	}
 }

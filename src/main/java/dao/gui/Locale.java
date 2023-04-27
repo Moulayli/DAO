@@ -10,6 +10,10 @@ public class Locale {
 		actionExit = "Quitter",
 		undefinedAction = "Action %s inconnue.",
 		prompt = "> ",
+		addUserFirstName = "Prénom : ",
+		addUserLastName = "Nom : ",
+		addUserLogin = "Nom d'utilisateur : ",
+		addUserSuccess = "Utilisateur créé avec succès.",
 		deleteUser = "Veuillez saisir l'identifiant de l'utilisateur à supprimer.",
 		exit = "Au revoir";
 }

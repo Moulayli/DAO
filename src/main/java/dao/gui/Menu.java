@@ -67,7 +67,22 @@ public class Menu {
 		System.out.println(String.format("(%s utilisateur%s)", users.size(), users.size() == 1 ? "" : 's'));
 	}
 
-	private static void add(final Scanner scanner) {}
+	private static void add(final Scanner scanner) {
+		final User user = new User(null, null, null, null);
+
+		System.out.print(Locale.addUserFirstName);
+		user.setFirstName(scanner.next());
+
+		System.out.print(Locale.addUserLastName);
+		user.setLastName(scanner.next());
+
+		System.out.print(Locale.addUserLogin);
+		user.setLogin(scanner.next());
+
+		UserDAO.getInstance().create(user);
+
+		System.out.println(Locale.addUserSuccess);
+	}
 
 	private static void edit(final Scanner scanner) {}
 

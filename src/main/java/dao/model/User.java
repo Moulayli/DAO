@@ -6,10 +6,11 @@ public class User {
 	private String firstName;
 	private String lastName;
 
-	public User(String string) {
-		this.lastName = string;
-
-		// TODO Auto-generated constructor stub
+	public User(final Integer id, final String firstName, final String lastName, final String login) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.login = login;
 	}
 	public Integer getId() {
 		return id;
@@ -42,10 +43,7 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String tostring() {
-		return this.lastName;
+	public String toString() {
+		return String.format("%s. %s %s (@%s)", id, firstName, lastName, login);
 	}
-
-
-
 }

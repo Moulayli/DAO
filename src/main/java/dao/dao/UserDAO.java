@@ -61,7 +61,12 @@ public class UserDAO implements IDAO<User> {
 
 			List<User> userList = new ArrayList<>();
 			while (rs.next()) {
-				User user = new User(rs.getString("lastname"));
+				User user = new User(
+					Integer.parseInt(rs.getString("id")),
+					rs.getString("firstName"),
+					rs.getString("lastName"),
+					rs.getString("login")
+				);
 				userList.add(user);
 			}
 			return userList;
@@ -90,7 +95,12 @@ public class UserDAO implements IDAO<User> {
 			pst = conn.prepareStatement(SELECT_USERS_BY_ID);
 			pst.setLong(1, id);
 			rs = pst.executeQuery();
-			User user = new User(rs.getString("lastname"));
+			User user = new User(
+				Integer.parseInt(rs.getString("id")),
+				rs.getString("firstName"),
+				rs.getString("lastName"),
+				rs.getString("login")
+			);
 			return user;
 
 		} catch (SQLException e) {

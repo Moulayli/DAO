@@ -1,21 +1,27 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Scanner;
 
 import dao.dao.IDAO;
 import dao.dao.JdbcSingleton;
 import dao.dao.UserDAO;
+import dao.gui.Menu;
 import dao.model.User;
 
 public class DaoMain {
-	
-	
-
 	public static void main(String[] args) {
-		
+        final Scanner scanner = new Scanner(System.in);
+
+        for (;;) {
+            Menu.print();
+
+            if (!Menu.handleAction(scanner.nextInt())) {
+                scanner.close();
+
+                break;
+            }
+        }
+
         User user1=new User();
         user1.setFirstName("Nathalie");
         user1.setLastName("Forget");

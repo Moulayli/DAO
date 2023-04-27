@@ -3,7 +3,6 @@ package dao.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class JdbcSingleton {
 	private final static String URL = "jdbc:mysql://localhost/dao";

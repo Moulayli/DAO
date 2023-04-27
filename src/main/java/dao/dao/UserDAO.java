@@ -62,11 +62,10 @@ public class UserDAO implements IDAO<User> {
 			List<User> userList = new ArrayList<>();
 			while (rs.next()) {
 				User user = new User(
-					Integer.parseInt(rs.getString("id")),
-					rs.getString("firstName"),
-					rs.getString("lastName"),
-					rs.getString("login")
-				);
+						Integer.parseInt(rs.getString("id")),
+						rs.getString("firstName"),
+						rs.getString("lastName"),
+						rs.getString("login"));
 				userList.add(user);
 			}
 			return userList;
@@ -96,11 +95,10 @@ public class UserDAO implements IDAO<User> {
 			pst.setLong(1, id);
 			rs = pst.executeQuery();
 			User user = new User(
-				Integer.parseInt(rs.getString("id")),
-				rs.getString("firstName"),
-				rs.getString("lastName"),
-				rs.getString("login")
-			);
+					Integer.parseInt(rs.getString("id")),
+					rs.getString("firstName"),
+					rs.getString("lastName"),
+					rs.getString("login"));
 			return user;
 
 		} catch (SQLException e) {
@@ -146,17 +144,14 @@ public class UserDAO implements IDAO<User> {
 
 	}
 
-	public void delete(User user) {
+	public void delete(Integer id) {
 		PreparedStatement pst = null;
 		try {
 			pst = JdbcSingleton.getInstance().getConnection().prepareStatement(DELETE_USERS_BY_ID,
 					PreparedStatement.RETURN_GENERATED_KEYS);
-			pst.setLong(1, user.getId());
+			pst.setLong(1, id);
 			pst.execute();
 			ResultSet rs = pst.getGeneratedKeys();
-			if (rs.next()) {
-				user.setId(rs.getInt(1));
-			}
 			if (rs != null) {
 				rs.close();
 			}

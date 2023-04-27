@@ -1,6 +1,6 @@
 package dao.gui;
 
-import java.util.Arrays;
+import java.util.List;
 
 import dao.dao.UserDAO;
 import dao.model.User;
@@ -31,15 +31,15 @@ public class Menu {
 
 				break;
 			case actionAdd:
-				// TODO: implement
+				add();
 
 				break;
 			case actionEdit:
-				// TODO: implement
+				edit();
 
 				break;
 			case actionDelete:
-				// TODO: implement
+				delete();
 
 				break;
 			case actionExit:
@@ -58,8 +58,15 @@ public class Menu {
 	}
 
 	private static void list() {
-		final User[] users = (User[]) UserDAO.getInstance().readAll().toArray();
+		final List<User> users = UserDAO.getInstance().readAll();
 
-		System.out.println(Arrays.toString(users));
+		users.forEach(System.out::println);
+		System.out.println(String.format("(%s utilisateur%s)", users.size(), users.size() == 1 ? "" : 's'));
 	}
+
+	private static void add() {}
+
+	private static void edit() {}
+
+	private static void delete() {}
 }

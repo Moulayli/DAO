@@ -42,8 +42,8 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String tostring() {
-		return this.lastName;
+	public String toString() {
+		return String.format("%s. %s %s (@%s)", id, firstName, lastName, login);
 	}
 
 

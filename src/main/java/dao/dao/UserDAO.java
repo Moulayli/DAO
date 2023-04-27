@@ -94,12 +94,16 @@ public class UserDAO implements IDAO<User> {
 			pst = conn.prepareStatement(SELECT_USERS_BY_ID);
 			pst.setInt(1, id);
 			rs = pst.executeQuery();
-			User user = new User(
-					rs.getInt("id"),
-					rs.getString("firstName"),
-					rs.getString("lastName"),
-					rs.getString("login"));
-			return user;
+
+			if (rs.next()) {
+				User user = new User(
+						rs.getInt("id"),
+						rs.getString("firstName"),
+						rs.getString("lastName"),
+						rs.getString("login"));
+				return user;
+			}
+			return null;
 
 		} catch (SQLException e) {
 			e.printStackTrace();

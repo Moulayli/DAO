@@ -1,6 +1,7 @@
 package dao.gui;
 
 import java.util.List;
+import java.util.Scanner;
 
 import dao.dao.UserDAO;
 import dao.model.User;
@@ -22,7 +23,9 @@ public class Menu {
 		System.out.print(Locale.prompt);
 	}
 
-	public static boolean handleAction(final int action) {
+	public static boolean handleAction(final Scanner scanner) {
+		final int action = scanner.nextInt();
+
 		System.out.println();
 
 		switch (action) {
@@ -31,15 +34,15 @@ public class Menu {
 
 				break;
 			case actionAdd:
-				add();
+				add(scanner);
 
 				break;
 			case actionEdit:
-				edit();
+				edit(scanner);
 
 				break;
 			case actionDelete:
-				delete();
+				delete(scanner);
 
 				break;
 			case actionExit:
@@ -64,9 +67,16 @@ public class Menu {
 		System.out.println(String.format("(%s utilisateur%s)", users.size(), users.size() == 1 ? "" : 's'));
 	}
 
-	private static void add() {}
+	private static void add(final Scanner scanner) {}
 
-	private static void edit() {}
+	private static void edit(final Scanner scanner) {}
 
-	private static void delete() {}
+	private static void delete(final Scanner scanner) {
+		System.out.println(Locale.deleteUser);
+		System.out.print(Locale.prompt);
+
+		final int id = scanner.nextInt();
+
+		System.out.println(id);
+	}
 }

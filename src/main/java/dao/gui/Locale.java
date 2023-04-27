@@ -10,5 +10,6 @@ public class Locale {
 		actionExit = "Quitter",
 		undefinedAction = "Action %s inconnue.",
 		prompt = "> ",
+		deleteUser = "Veuillez saisir l'identifiant de l'utilisateur à supprimer.",
 		exit = "Au revoir";
 }

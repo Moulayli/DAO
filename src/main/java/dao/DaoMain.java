@@ -15,7 +15,7 @@ public class DaoMain {
         for (;;) {
             Menu.print();
 
-            if (!Menu.handleAction(scanner.nextInt())) {
+            if (!Menu.handleAction(scanner)) {
                 scanner.close();
 
                 break;

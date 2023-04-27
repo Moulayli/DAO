@@ -91,14 +91,32 @@ public class Menu {
 		final int id = scanner.nextInt();
 		final User user = UserDAO.getInstance().read(id);
 
-		System.out.print(Locale.editUserFirstName);
-		user.setFirstName(scanner.next());
+		if (user == null) {
+			System.out.println(String.format(Locale.undefinedUser, id));
 
-		System.out.print(Locale.editUserLastName);
-		user.setLastName(scanner.next());
+			return;
+		}
 
-		System.out.print(Locale.editUserLogin);
-		user.setLogin(scanner.next());
+		{
+			System.out.print(Locale.editUserFirstName);
+			final String firstName = scanner.next();
+
+			if (!firstName.isBlank()) user.setFirstName(firstName);
+		}
+
+		{
+			System.out.print(Locale.editUserLastName);
+			final String lastName = scanner.next();
+
+			if (!lastName.isBlank()) user.setLastName(lastName);
+		}
+
+		{
+			System.out.print(Locale.editUserLogin);
+			final String login = scanner.next();
+
+			if (!login.isBlank()) user.setLogin(login);
+		}
 
 		UserDAO.getInstance().update(user);
 

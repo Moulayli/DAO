@@ -131,6 +131,7 @@ public class UserDAO implements IDAO<User> {
 			pst.setString(2, user.getPwd());
 			pst.setString(3, user.getFirstName());
 			pst.setString(4, user.getLastName());
+			pst.setInt(5, user.getId());
 			pst.execute();
 			ResultSet rs = pst.getGeneratedKeys();
 			if (rs.next()) {

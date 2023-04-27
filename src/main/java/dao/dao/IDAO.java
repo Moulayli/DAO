@@ -7,5 +7,5 @@ public interface IDAO<T> {
 	public List<T> readAll();
 	public T read(Integer id);
 	public void update(T t);
-	public void delete(T t);
+	public void delete(Integer id);
 }
